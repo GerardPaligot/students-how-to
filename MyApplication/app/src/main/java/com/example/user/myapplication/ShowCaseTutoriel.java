@@ -1,8 +1,9 @@
 package com.example.user.myapplication;
 
-import com.github.amlcurran.showcaseview.ShowcaseView;
+import android.app.Activity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -10,20 +11,50 @@ import java.util.List;
  */
 
 public class ShowCaseTutoriel {
-    private String name;
-    private List<ShowCaseScreen> listScreens;
+    private final String name;
+    private final List<ShowCaseScreen> listScreens;
 
-    public ShowCaseTutoriel(String name, List<ShowCaseScreen> listShowCaseScreen) {
-        this.name = name;
-        this.listScreens = listShowCaseScreen;
+    private ShowCaseTutoriel(Builder builder) {
+        this.name = builder.name;
+        this.listScreens = builder.listScreen;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<ShowCaseScreen> getScreens() {
+        return Collections.unmodifiableList(listScreens);
+    }
+
+    public ShowCaseScreen getScreenWithName(String nameScreen) {
+        for (ShowCaseScreen screen : listScreens) {
+            if (nameScreen.equals(screen.getName())) {
+                return screen;
+            }
+        }
+        return null;
+    }
+
+    public ShowCaseScreen getScreenWithName(Activity activity) {
+        return getScreenWithName(activity.getClass().getSimpleName());
+    }
+
+    public ShowCaseScreen getNextScreenName(Activity activity) {
+        for (int i = 0; i < listScreens.size(); i++) {
+            if (listScreens.get(i).getName().equals(activity.getClass().getSimpleName())) {
+                if (i + 1 < listScreens.size()) {
+                    return listScreens.get(i + 1);
+                }
+                return null;
+            }
+        }
+        return null;
     }
 
     public static class Builder {
-        private static String name;
-        private  List<ShowCaseScreen> listScreen = new ArrayList<ShowCaseScreen>();
-
-        public Builder(){
-        }
+        private String name;
+        private List<ShowCaseScreen> listScreen = new ArrayList<ShowCaseScreen>();
 
         public ShowCaseTutoriel.Builder setName(String name) {
             this.name = name;
@@ -36,39 +67,9 @@ public class ShowCaseTutoriel {
         }
 
         public ShowCaseTutoriel build() {
-            return new ShowCaseTutoriel(this.name, this.listScreen);
-        }
-
-        public class addScreen {
-            public addScreen(ShowCaseScreen build) {
-            }
-        }
-
-        public static String getName() {
-            return name;
+            return new ShowCaseTutoriel(this);
         }
     }
-
-    public String getName() {
-        return Builder.getName();
-    }
-
-
-
-    public List<ShowCaseScreen> getScreens() {
-        return listScreens;
-    }
-
-    public ShowCaseScreen getScreenWithName(String nameScreen) {
-        for (ShowCaseScreen screen : listScreens){
-            if (nameScreen.equals(screen.getName())) {
-                return screen;
-            }
-        }
-        return null;
-    }
-
-
 }
 
 
