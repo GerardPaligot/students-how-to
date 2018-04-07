@@ -79,21 +79,35 @@ public class ActivityList extends AppCompatActivity {
                         .build())
                 .addScreen(new ShowCaseScreen.Builder()
                         .setName("ActivityC")
-                        .addTarget(
-                                new ShowCaseTarget.Builder()
-                                        .setId(R.id.butAC).build())
-                        .addTarget(
-                                new ShowCaseTarget.Builder()
-                                        .setId(R.id.butDC).build())
                         .addTarget(new ShowCaseTarget.Builder()
-                                .setId(R.id.imageButtonC).build()).build())
+                                .setId(R.id.butAC)
+                                .setTitle("Bouton A ")
+                                .setDescription("Passez à l'activité A")
+                                .build())
+                        .addTarget(new ShowCaseTarget.Builder()
+                                .setId(R.id.butDC)
+                                .setTitle("Bouton D ")
+                                .setDescription("Passez à l'activité D")
+                                .build())
+                        .addTarget(new ShowCaseTarget.Builder()
+                                .setId(R.id.imageButtonC)
+                                .setTitle("Bouton Home")
+                                .setDescription("Revenez au menu")
+                                .build())
+                        .build())
                 .addScreen(new ShowCaseScreen.Builder()
                         .setName("ActivityD")
-                        .addTarget(
-                                new ShowCaseTarget.Builder()
-                                        .setId(R.id.butC).build())
-                        .addTarget(
-                                new ShowCaseTarget.Builder()
-                                        .setId(R.id.imageButton).build()).build()).build();
+                        .addTarget(new ShowCaseTarget.Builder()
+                                .setId(R.id.butC)
+                                .setTitle("Bouton C ")
+                                .setDescription("Passez à l'acitivité C")
+                                .build())
+                        .addTarget(new ShowCaseTarget.Builder()
+                                .setId(R.id.imageButton)
+                                .setTitle("Bouton Home")
+                                .setDescription("Revenez au menu")
+                                .build())
+                        .build())
+                .build();
     }
 }

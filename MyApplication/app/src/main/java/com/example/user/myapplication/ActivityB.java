@@ -84,7 +84,6 @@ public class ActivityB extends Activity implements View.OnClickListener {
     }
 
     private void launchActivityC() {
-
         Intent intent = new Intent(this, ActivityC.class);
         startActivityForResult(intent, 0);
     }

@@ -10,15 +10,25 @@ import java.util.List;
  * Created by User on 15/02/2018.
  */
 
+
+/**
+ * This class permits to build a tutorial containing all the screens
+ */
 public class ShowCaseTutoriel {
     private final String name;
     private final List<ShowCaseScreen> listScreens;
 
+
+    /**Build a tutorial and this constructor is called by the method build of Builder class
+     *
+     * @param builder a builder of tutorial
+     */
     private ShowCaseTutoriel(Builder builder) {
         this.name = builder.name;
         this.listScreens = builder.listScreen;
     }
 
+    
     public String getName() {
         return name;
     }
