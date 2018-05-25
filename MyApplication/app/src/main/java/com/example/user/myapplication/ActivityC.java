@@ -27,7 +27,7 @@ public class ActivityC extends Activity implements View.OnClickListener{
         ImageButton imageButtonC= findViewById(R.id.imageButtonC);
 
         tutoCurrent = ShowCaseTutorielSingleton.getInstance().getCurrentTutoriel();
-        screenCurrent = tutoCurrent.getScreenWithName("ActivityC");
+        screenCurrent = tutoCurrent.getScreenWithName(this);
 
         ShowCaseTarget swTarget = screenCurrent.getTarget(0);
         scView = swTarget.create(this)
